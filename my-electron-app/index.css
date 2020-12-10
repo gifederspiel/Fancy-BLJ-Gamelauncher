@@ -1,0 +1,16 @@
+.grid{
+    display: grid;
+    grid-template-columns: 1fr,2fr;
+    grid-template-rows: 1fr,3fr;
+}
+header{
+    grid-column: 1-3;
+    grid-row: 1;
+    text-align: center;
+}
+dt{
+    border: solid 1px black;
+    grid-column: 1;
+    grid-row: 2;
+    margin-right: 66%;
+}

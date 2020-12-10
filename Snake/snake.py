@@ -4,19 +4,7 @@ import numpy as np
 import time
 import tkinter as tk
 from tkinter import *
-
 import mysql.connector
-db = mysql.connector.connect(
-	host="localhost",
-	user="root",
-	password="12345Root",
-	database="SnakePlayers",
-	port="3360"
-	)
-mycursor = db.cursor()
-
-mycursor
-
 
  
 partikel = 25
@@ -91,6 +79,9 @@ def apfelCoordGen():
         if change == False:
             return Coord
 
+#Blacklist
+blacklist = ["kkk", "bruh", "cringe", "bloat", "holdup", "rape"]
+
 #Formular für Spielername
 user_text= ''
 entered = False
@@ -121,8 +112,20 @@ if i == 1:
 					#Falls Entertaste gedrück sende Name ab und lade Spiel
 					if event.key == pygame.K_RETURN and user_text != '':
 						active = False
-						entered = True
-						name = user_text
+						for word in blacklist:
+							if user_text == word:
+								zeichner()
+								textGrund,textKasten = textObjekt("Dein Name ist nicht zugelassen",font)
+								textKasten.center = ((350,40))
+								screen.blit(textGrund,textKasten)
+								pygame.display.update()
+								time.sleep(1)
+								break
+								entered = False
+							else:
+								entered = True
+								name = user_text
+
 					#Eingabe löschen
 					if event.key == pygame.K_BACKSPACE:
 						user_text = user_text[:-1]
@@ -244,12 +247,38 @@ if entered == True:
 	        break
 	    clock.tick(10)
 
+
+insert = False
+
 #Zeigt Gameover Screen Bei Kollision
-while coll:
+if coll:
 	screen.fill((0,0,0))
 	textGrund,textKasten = textObjekt("GAME OVER",fontBig)
 	textKasten.center = ((350,295))
 	screen.blit(textGrund,textKasten)
 	pygame.display.update()
+	insert = True
+	time.sleep(5)
+	
 
-	print(score, name)
+
+#Datenbankverbindung
+#Insertet erst wenn spiel fertig ist
+
+if insert == True:
+	print("test")
+	
+	db = mysql.connector.connect(
+		host="localhost",
+		user="root",
+		password="12345Root",
+		database="playerdata1",
+		port="3307"
+		)
+	mycursor = db.cursor()
+
+	sql = "INSERT INTO playerdata (name, score) VALUES (%s, %s)"
+	val = (name, score)
+	mycursor.execute(sql, val)
+
+	db.commit()
