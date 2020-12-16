@@ -80,7 +80,7 @@ def apfelCoordGen():
             return Coord
 
 #Blacklist
-blacklist = ["kkk", "bruh", "cringe", "bloat", "holdup", "rape"]
+blacklist = ["kkk", "bruh", "cringe", "bloat", "holdup", "rape", "livio"]
 
 #Formular für Spielername
 user_text= ''
@@ -120,8 +120,9 @@ if i == 1:
 								screen.blit(textGrund,textKasten)
 								pygame.display.update()
 								time.sleep(1)
-								break
 								entered = False
+								break
+								
 							else:
 								entered = True
 								name = user_text
@@ -266,8 +267,8 @@ if coll:
 #Insertet erst wenn spiel fertig ist
 
 if insert == True:
-	print("test")
 	
+	print("test")
 	db = mysql.connector.connect(
 		host="localhost",
 		user="root",
