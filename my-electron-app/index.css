@@ -66,3 +66,30 @@ hr{
     background-color: #009999;
     color: white;
   }
+.link {
+    text-decoration: none;
+    color: black;
+}
+#custom-button {
+    padding: 10px;
+    color: white;
+    background-color: #009999;
+    border: 1px solid #000;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #custom-button:hover {
+    background-color: #009999;
+  }
+  
+  #custom-text {
+    margin-left: 10px;
+    font-family: sans-serif;
+    color: black;
+  }
+  input{
+    padding: 10px;
+    border: 1px solid #009999;
+    width: 137px;
+  }

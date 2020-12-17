@@ -5,14 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
     <title>Snake</title>
-    <script language="JavaScript" type="text/javascript">  
-        MyObject = new ActiveXObject( "WScript.Shell" )  
-        function RunExe()   
-        {  
-          MyObject.Run("C:/Fancy_BLJ-Gamelauncher/Snake/snake.exe");  
-       }  0
-     
+    <script>
+        function Process() {
+        const process = require('child_process');   
+        var ls = process.spawn('C:\\Fancy_BLJ-Gamelauncher\\my-electron-app\\startsnake.bat');
+        ls.stdout.on('data', function (data) {
+          console.log(data);
+        });
+        ls.stderr.on('data', function (data) {
+          console.log(data);
+        });
+        ls.on('close', function (code) {
+           if (code == 0)
+                console.log('Stop');
+           else
+                console.log('Start');
+        });
+    };
     </script>
+    
 </head>
 <body>
     <header>
@@ -23,6 +34,7 @@
     <nav class="sidenav">   
         <a href="index.html">Startseite</a>
         <a href="snake.html">Snake</a>
+        <a href="formular.html">Your Game</a>
              
     </nav>
     <main>
@@ -42,9 +54,10 @@
             
         </p>
         <img src="C:\Fancy_BLJ-Gamelauncher\Documents\Pictures\Snake.JPG" alt="" class="snakepic">
-        <button onclick="RunExe()" class="startbutton">Snake Starten</button>
-
+        <button class="startbutton">
+            <a href="C:/Fancy_BLJ-Gamelauncher/Snake/snake.exe" class="link">Snake downloaden</a>
+        </button>
+        <button class="startbutton" onclick="Process()">Snake starten</button>
     </main>
-    
 </body>
 </html>

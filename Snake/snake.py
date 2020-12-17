@@ -94,7 +94,9 @@ color = color_passive
 i = 1
 
 if i == 1:
-	while entered == False:
+	while entered == False:  
+  
+  
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				pygame.quit()
