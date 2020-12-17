@@ -23,34 +23,14 @@
         <p>
             Hier hast du die Möglichkeit dein eigenes Spiel einzusenden. Dein Spiel wird zu erst geprüft, bevor es publiziert wird. <br>
         </p>
-        <form action="authors">
+        <form action="mailto:gian.federspiel@bluewin.ch" method="GET" enctype="multipart/form-data">
             <input type="text" id="fname" name="fname" placeholder="Author's first name">
             <input type="text" id="lname" name="lname" placeholder="Author's last name">
+        
+            <input type="file" name="subgame">
+            
+            <input type="submit" id="custom-button">
         </form>
-        <input type="file" id="real-file" hidden="hidden" />
-        <br><button type="button" id="custom-button">Wähle deine Spieldatei</button>
-        <span id="custom-text">Noch kein File gewählt.</span>
-        <script>
-            const realFileBtn = document.getElementById("real-file");
-            const customBtn = document.getElementById("custom-button");
-            const customTxt = document.getElementById("custom-text");
-
-            customBtn.addEventListener("click", function() {
-            realFileBtn.click();
-            });
-
-            realFileBtn.addEventListener("change", function() {
-            if (realFileBtn.value) {
-                customTxt.innerHTML = realFileBtn.value.match(
-                /[\/\\]([\w\d\s\.\-\(\)]+)$/
-                )[1];
-            } else {
-                customTxt.innerHTML = "No file chosen, yet.";
-            }
-            });
-        </script>
-        
-        
     </main>
 </body>
 

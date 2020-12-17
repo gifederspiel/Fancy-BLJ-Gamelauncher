@@ -91,5 +91,6 @@ hr{
   input{
     padding: 10px;
     border: 1px solid #009999;
-    width: 137px;
+    width: auto;
+    height: 30px;
   }
