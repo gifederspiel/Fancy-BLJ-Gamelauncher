@@ -21,17 +21,23 @@
     <main>
         <h2>Sende dein Spiel ein</h2>
         <p>
-            Hier hast du die Möglichkeit dein eigenes Spiel einzusenden. Dein Spiel wird zu erst geprüft, bevor es publiziert wird. <br>
+            Hier hast du die Möglichkeit dein eigenes Spiel einzusenden.<br>
         </p>
-        <form action="mailto:gian.federspiel@bluewin.ch" method="GET" enctype="multipart/form-data">
+        <form enctype="multipart/form-data">
             <input type="text" id="fname" name="fname" placeholder="Author's first name">
-            <input type="text" id="lname" name="lname" placeholder="Author's last name">
-        
-            <input type="file" name="subgame">
-            
-            <input type="submit" id="custom-button">
+            <input type="text" id="lname" name="lname" placeholder="Author's last name">            
+            <button type="button" id="custom-button">upload</button>
+            <br>
+            <hr>
+
         </form>
+        <h2>Games von der Community: </h2>
+        <ul id="gamelist">
+
+        </ul>
     </main>
+    <script src="upload.js"></script>
+    <script src="games.js"></script>
 </body>
 
 </html>

@@ -168,6 +168,7 @@ apfelInd = -1
 ende = False
 score = 0
 coll = False
+insert = False
 
 #Erst beginnen wenn Name eingegeben wurde
 if entered == True:
@@ -235,33 +236,34 @@ if entered == True:
 	        apfelCoords.append(apfelCoordGen())
 	 
 	    if ende == False:
-	        zeichner()
-	        textGrund,textKasten = textObjekt("Score: " + str(score),font)
-	        textKasten.center = ((350,40))
-	        screen.blit(textGrund,textKasten)
-	        pygame.display.update()
+		    zeichner()
+		    textGrund,textKasten = textObjekt("Score: " + str(score),font)
+		    textKasten.center = ((350,40))
+		    screen.blit(textGrund,textKasten)
+		    pygame.display.update()
 	    elif ende == True:
-	        zeichner()
-	        textGrund,textKasten = textObjekt("Du hast " + str(score) + " Punkte erreicht",font)
-	        textKasten.center = ((350,40))
-	        screen.blit(textGrund,textKasten)
-	        pygame.display.update()
-	        coll = True
-	        break
+		    zeichner()
+		    textGrund,textKasten = textObjekt("Du hast " + str(score) + " Punkte erreicht",font)
+		    textKasten.center = ((350,40))
+		    screen.blit(textGrund,textKasten)
+		    textGrund,textKasten = textObjekt("GAME OVER",fontBig)
+		    textKasten.center = ((350,295))
+		    screen.blit(textGrund,textKasten)
+		    pygame.display.update()
+		    time.sleep(5)
+		    partikel = 25
+		    schlange = [[13,13],[13,14]]
+		    apfelCoords = []
+		    richtung = 0
+		    go = True
+		    anhang = None
+		    apfelInd = -1
+		    ende = False
+		    score = 0
+		    coll = False
+		    insert = False
 	    clock.tick(10)
 
-
-insert = False
-
-#Zeigt Gameover Screen Bei Kollision
-if coll:
-	screen.fill((0,0,0))
-	textGrund,textKasten = textObjekt("GAME OVER",fontBig)
-	textKasten.center = ((350,295))
-	screen.blit(textGrund,textKasten)
-	pygame.display.update()
-	insert = True
-	time.sleep(5)
 	
 
 
@@ -279,9 +281,10 @@ if insert == True:
 		port="3307"
 		)
 	mycursor = db.cursor()
-
+	go = True
 	sql = "INSERT INTO playerdata (name, score) VALUES (%s, %s)"
 	val = (name, score)
 	mycursor.execute(sql, val)
 
 	db.commit()
+	insert = False

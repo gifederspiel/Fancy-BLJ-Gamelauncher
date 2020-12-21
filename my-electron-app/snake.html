@@ -6,9 +6,10 @@
     <link rel="stylesheet" href="index.css">
     <title>Snake</title>
     <script>
+        const app = require('electron')
         function Process() {
-        const process = require('child_process');   
-        var ls = process.spawn('C:\\Fancy_BLJ-Gamelauncher\\my-electron-app\\startsnake.bat');
+        const process = require('child_process');
+        var ls = process.spawn('games\\snake.exe');
         ls.stdout.on('data', function (data) {
           console.log(data);
         });
