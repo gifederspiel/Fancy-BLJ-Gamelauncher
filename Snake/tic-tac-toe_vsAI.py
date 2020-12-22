@@ -142,13 +142,17 @@ class GameLoop:
         return False
 
     def GameOver(self):
+        game_over = False
         self.GameState = MiniMax(self.gameboard).evaluate()
         if self.GameState == 1:
             print('x Won this Game')
+            game_over = True
         elif self.GameState == 0:
             print('None Won')
+            game_over = True
         elif self.GameState == -1:
             print('o Won this Game')
+            game_over = True
 
 
 if __name__ == "__main__":
