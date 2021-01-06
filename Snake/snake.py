@@ -261,7 +261,7 @@ if entered == True:
 		    ende = False
 		    score = 0
 		    coll = False
-		    insert = False
+		    insert = True
 	    clock.tick(10)
 
 	
@@ -282,7 +282,7 @@ if insert == True:
 		)
 	mycursor = db.cursor()
 	go = True
-	sql = "INSERT INTO playerdata (name, score) VALUES (%s, %s)"
+	sql = "INSERT INTO playerdata_real (name, score) VALUES (%s, %s)"
 	val = (name, score)
 	mycursor.execute(sql, val)
 
